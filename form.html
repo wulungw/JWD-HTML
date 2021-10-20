@@ -4,22 +4,34 @@
 <head>
     <title>Halaman Login</title>
     <script src='validasi.js'></script>
-    <script>
-        function ageCalculator() {
-            var userinput = document.getElementById("DOB").value;
-            var dob = new Date(userinput);
-            if(userinput==null || userinput=='') {
-              document.getElementById("message").innerHTML = "**Choose a date please!";  
-              return false; 
-            } else {
-            var month_diff = Date.now() - dob.getTime();
-            var age_dt = new Date(month_diff); 
-            var year = age_dt.getUTCFullYear();
-            var age = Math.abs(year - 1970);
-            return document.getElementById("result").innerHTML = age + " Tahun";
-            }
+    <script type="text/javascript">
+
+        var minAge = 18;
+        var maxAge = 30;
+        function _calcAge() {
+            var date = new Date(document.getElementById("date").value);
+            var today = new Date();
+
+            var timeDiff = Math.abs(today.getTime() - date.getTime());
+            var age1 = Math.ceil(timeDiff / (1000 * 3600 * 24)) / 365;
+            return age1;
         }
-        </script>
+        function _setAge() {
+
+            var age = _calcAge();
+            if (age <= minAge) {
+                alert("Usia Minimal 18 Tahun!");
+            }else if(age >= maxAge){
+                alert("Usia Minimal 18 Tahun!");
+            } else if(age == NaN){
+                alert("Usia Tidak Boleh Kosong");
+            }else
+
+            document.getElementById("result").innerHTML = age + "Tahun";
+        }
+
+
+    </script>
 </head>
 <body>
     <form  method="post" action="" onsubmit='return cekform()'>
@@ -51,12 +63,12 @@
             <tr>
                 <td class="label-formulir">Tanggal Lahir</td>
                 <td class="isian-formulir">
-                    <input type="date" id='DOB' name="DOB" oninput = "ageCalculator()" class="isian-formulir isian-formulir-border">
-                </td>
+                    <input type="date" name="date" id="date" />
             </tr>
             <tr>
                 <td class="label-formulir">Usia</td>
-                <td  id="result"></td>
+                <td><button onclick="_setAge();">cek</td>
+                <td id='result'></td>
             </tr>
             <tr>
                 <td class="label-formulir">Jenis Kelamin</td>

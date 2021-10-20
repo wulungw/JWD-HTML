@@ -3,13 +3,13 @@ function cekform(){
     nama = document.getElementById('nama');
     panggilan = document.getElementById('panggilan');
     alamat = document.getElementById('alamat');
-    DOB = document.getElementById('DOB');
+    date = document.getElementById('date');
+    usia = document.getElementById('usia');
     kelamin = document.getElementById('kelamin');
     kota = document.getElementById('kota');
     email = document.getElementById('email');
     number = document.getElementById('number');
     medsos = document.getElementById('medsos');
-    
     if(foto.value==''){
         alert('Foto belum dipilih');
         foto.focus();
@@ -34,9 +34,9 @@ function cekform(){
         alert('Tempat Lahir tidak boleh kosong');
         alamat.focus();
         return false;
-    }else if(DOB.value==''){
+    }else if(date.value==''){
         alert('Tanggal Lahir tidak boleh kosong');
-        DOB.focus();
+        date.focus();
         return false;
     }else if(kelamin.value==''){
         alert('Kelamin tidak boleh kosong');
