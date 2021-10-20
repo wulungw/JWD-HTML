@@ -1,0 +1,111 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Halaman Login</title>
+    <script src='validasi.js'></script>
+    <script>
+        function ageCalculator() {
+            var userinput = document.getElementById("DOB").value;
+            var dob = new Date(userinput);
+            if(userinput==null || userinput=='') {
+              document.getElementById("message").innerHTML = "**Choose a date please!";  
+              return false; 
+            } else {
+            var month_diff = Date.now() - dob.getTime();
+            var age_dt = new Date(month_diff); 
+            var year = age_dt.getUTCFullYear();
+            var age = Math.abs(year - 1970);
+            return document.getElementById("result").innerHTML = age + " Tahun";
+            }
+        }
+        </script>
+</head>
+<body>
+    <form  method="post" action="" onsubmit='return cekform()'>
+        <table id="tabel-input">
+            <tr>
+                <td class="label-formulir">Foto</td>
+                <td class="isian-formulir">
+                    <input type="file" id='foto'value="foto"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-formulir">Nama Lengkap</td>
+                <td class="isian-formulir">
+                    <input type="text" id='nama' name="nama" class="isian-formulir isian-formulir-border">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-formulir">Nama Panggilan</td>
+                <td class="isian-formulir">
+                    <input type="text" id='panggilan' name="panggilan" class="isian-formulir isian-formulir-border">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-formulir">Tempat Lahir</td>
+                <td class="isian-formulir">
+                    <input rows="2" cols="40" id='alamat' name="alamat" class="isian-formulir isian-formulir-border">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-formulir">Tanggal Lahir</td>
+                <td class="isian-formulir">
+                    <input type="date" id='DOB' name="DOB" oninput = "ageCalculator()" class="isian-formulir isian-formulir-border">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-formulir">Usia</td>
+                <td  id="result"></td>
+            </tr>
+            <tr>
+                <td class="label-formulir">Jenis Kelamin</td>
+                <td class="isian-formulir">
+                    <select name="kelamin" id="kelamin">
+                    <option value="laki">Laki-Laki</option>
+                    <option value="perempuan">Perempuan</option>
+                  </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-formulir">Kota Tinggal</td>
+                <td class="isian-formulir">
+                    <select name="kota" id="kota">
+                    <option value="Jakarta">Jakarta</option>
+                    <option value="Solo">Solo</option>
+                    <option value="Surabaya">Surabaya</option>
+                    <option value="Jogja">Jogja</option>
+                  </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="label-formulir">Email</td>
+                <td class="isian-formulir">
+                    <input type="email" id='email' name="email" class="isian-formulir isian-formulir-border">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-formulir">No HP</td>
+                <td class="isian-formulir">
+                    <input type="number" id='number' name="number" class="isian-formulir isian-formulir-border">
+                </td>
+            </tr>
+            <tr>
+                <td class="label-formulir">Media Sosial</td>
+                    <td class="isian-formulir">
+                        <select name="medsos" id="medsos">
+                        <option value="Facebook">Facebook</option>
+                        <option value="Instagram">Instagram</option>
+                        <option value="Twitter">Twitter</option>
+                      </select>
+                    </td>
+            </tr>
+            <tr>
+                <td class="isian-formulir">
+                    <input type="submit" name="simpan" value="simpan" class="tombol">
+                </td>
+            </tr>
+        </table>
+        </form>
+</body>
+    </html>
